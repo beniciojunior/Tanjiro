@@ -13,38 +13,45 @@ public struct LayoutAttribute<Anchor: LayoutAnchor> {
 }
 
 public extension LayoutAttribute {
-    func equal(to otherAnchor: Anchor, offsetBy constant: CGFloat = 0) {
-        anchor.constraint(equalTo: otherAnchor,
-                          constant: constant).isActive = true
+    @discardableResult func equal(to otherAnchor: Anchor, offsetBy constant: CGFloat = 0) -> NSLayoutConstraint? {
+        let c = anchor.constraint(equalTo: otherAnchor, constant: constant)
+        c.isActive = true
+        return c
     }
 
-    func greaterThanOrEqual(to otherAnchor: Anchor,
-                            offsetBy constant: CGFloat = 0) {
-        anchor.constraint(greaterThanOrEqualTo: otherAnchor,
-                          constant: constant).isActive = true
+    @discardableResult func greaterThanOrEqual(to otherAnchor: Anchor,
+                                               offsetBy constant: CGFloat = 0) -> NSLayoutConstraint? {
+        let c = anchor.constraint(greaterThanOrEqualTo: otherAnchor, constant: constant)
+        c.isActive = true
+        return c
     }
 
-    func lessThanOrEqual(to otherAnchor: Anchor,
-                         offsetBy constant: CGFloat = 0) {
-        anchor.constraint(lessThanOrEqualTo: otherAnchor,
-                          constant: constant).isActive = true
+    @discardableResult func lessThanOrEqual(to otherAnchor: Anchor,
+                                            offsetBy constant: CGFloat = 0) -> NSLayoutConstraint? {
+        let c = anchor.constraint(lessThanOrEqualTo: otherAnchor, constant: constant)
+        c.isActive = true
+        return c
     }
 
-    func equalToSuperView(_ constant: CGFloat = 0) {
-        guard let superView = superViewAnchor else { return }
-        anchor.constraint(equalTo: superView, constant: constant).isActive = true
+    @discardableResult func equalToSuperView(_ constant: CGFloat = 0) -> NSLayoutConstraint? {
+        guard let superView = superViewAnchor else { return nil }
+        let c = anchor.constraint(equalTo: superView, constant: constant)
+        c.isActive = true
+        return c
     }
 
-    func greaterThanOrEqualToSuperView(_ constant: CGFloat = 0) {
-        guard let superView = superViewAnchor else { return }
-        anchor.constraint(greaterThanOrEqualTo: superView,
-                          constant: constant).isActive = true
+    @discardableResult func greaterThanOrEqualToSuperView(_ constant: CGFloat = 0) -> NSLayoutConstraint? {
+        guard let superView = superViewAnchor else { return nil }
+        let c = anchor.constraint(greaterThanOrEqualTo: superView, constant: constant)
+        c.isActive = true
+        return c
     }
 
-    func lessThanOrEqualToSuperView(to otherAnchor: Anchor,
-                         offsetBy constant: CGFloat = 0) {
-        guard let superView = superViewAnchor else { return }
-        anchor.constraint(lessThanOrEqualTo: superView,
-                          constant: constant).isActive = true
+    @discardableResult func lessThanOrEqualToSuperView(to otherAnchor: Anchor,
+                         offsetBy constant: CGFloat = 0) -> NSLayoutConstraint? {
+        guard let superView = superViewAnchor else { return nil }
+        let c = anchor.constraint(lessThanOrEqualTo: superView, constant: constant)
+        c.isActive = true
+        return c
     }
 }
