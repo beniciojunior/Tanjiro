@@ -14,15 +14,21 @@ public struct LayoutForDimension<Anchor: LayoutDimension> {
 
 public extension LayoutForDimension {
 
-    func constraint(equalToConstant c: CGFloat = 0) {
-        anchor.constraint(equalToConstant: c).isActive = true
+    func constraint(equalToConstant c: CGFloat = 0) -> NSLayoutConstraint {
+        let c = anchor.constraint(equalToConstant: c)
+        c.isActive = true
+        return c
     }
 
-    func constraint(greaterThanOrEqualToConstant c: CGFloat = 0) {
-        anchor.constraint(greaterThanOrEqualToConstant: c).isActive = true
+    func constraint(greaterThanOrEqualToConstant c: CGFloat = 0) -> NSLayoutConstraint {
+        let c = anchor.constraint(greaterThanOrEqualToConstant: c)
+        c.isActive = true
+        return c
     }
 
-    func constraint(lessThanOrEqualToConstant c: CGFloat = 0) {
-        anchor.constraint(lessThanOrEqualToConstant: c).isActive = true
+    func constraint(lessThanOrEqualToConstant c: CGFloat = 0) -> NSLayoutConstraint {
+        let c = anchor.constraint(lessThanOrEqualToConstant: c)
+        c.isActive = true
+        return c
     }
 }
